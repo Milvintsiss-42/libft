@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 04:05:48 by ple-stra          #+#    #+#             */
-/*   Updated: 2021/11/30 22:22:36 by ple-stra         ###   ########.fr       */
+/*   Updated: 2021/12/03 00:05:33 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*start;
 	size_t	len;
 
+	if (!s1 || !set)
+		return (NULL);
 	while (*s1 && ft_strcontain(set, *s1))
 		s1++;
 	start = (char *)s1;

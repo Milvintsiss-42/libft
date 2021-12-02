@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 03:46:06 by ple-stra          #+#    #+#             */
-/*   Updated: 2021/11/30 19:38:14 by ple-stra         ###   ########.fr       */
+/*   Updated: 2021/12/03 00:06:18 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*str;
 	ssize_t	len;
 
+	if (!s1 || !s2)
+		return (NULL);
 	len = ft_strlen(s1) + ft_strlen(s2);
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)

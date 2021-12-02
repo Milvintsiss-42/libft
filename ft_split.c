@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 05:24:52 by ple-stra          #+#    #+#             */
-/*   Updated: 2021/12/02 21:38:40 by ple-stra         ###   ########.fr       */
+/*   Updated: 2021/12/03 00:04:26 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,20 @@ char	**ft_free(char **start, char **end)
 	return (NULL);
 }
 
+char	**return_and_null_terminate(char **start, char **end)
+{
+	*end = NULL;
+	return (start);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char		**strings;
 	char		**strings_tmp;
 	char const	*s_tmp;
 
+	if (!s)
+		return (NULL);
 	strings = malloc(sizeof(char *) * (get_number_of_strings(s, c) + 1));
 	if (!strings)
 		return (NULL);
@@ -61,8 +69,7 @@ char	**ft_split(char const *s, char c)
 			return (ft_free(strings, strings_tmp));
 		ft_strlcpy(*strings_tmp++, s_tmp, s - s_tmp + 1);
 	}
-	*strings_tmp = NULL;
-	return (strings);
+	return (return_and_null_terminate(strings, strings_tmp));
 }
 
 // int	main(void)

@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 21:45:46 by ple-stra          #+#    #+#             */
-/*   Updated: 2021/11/29 21:47:52 by ple-stra         ###   ########.fr       */
+/*   Updated: 2021/12/02 23:54:07 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
 
+	if (!s)
+		return ;
 	i = 0;
 	while (*s)
 		(*f)(i++, s++);
