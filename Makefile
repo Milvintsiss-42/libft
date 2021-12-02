@@ -6,7 +6,7 @@
 #    By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 21:12:38 by ple-stra          #+#    #+#              #
-#    Updated: 2021/11/30 19:33:03 by ple-stra         ###   ########.fr        #
+#    Updated: 2021/12/03 00:13:03 by ple-stra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,7 @@ all:	$(NAME)
 
 re:		fclean all
 
-bonus:	${OBJSBNS}
-			all
+bonus:	${OBJSBNS} all
 			ar r ${NAME} ${OBJSBNS}
 			ranlib ${NAME}
 
@@ -52,6 +51,7 @@ rebns: fclean bonus
 
 clean:
 		${RM} ${OBJS}
+		${RM} ${OBJSBNS}
 		@${RM} libft.so
 
 fclean: clean
