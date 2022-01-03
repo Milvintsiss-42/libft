@@ -6,59 +6,53 @@
 #    By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 21:12:38 by ple-stra          #+#    #+#              #
-#    Updated: 2021/12/03 00:13:03 by ple-stra         ###   ########.fr        #
+#    Updated: 2022/01/03 18:35:54 by ple-stra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
 
-SRCS	= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c\
+SRCS_DIR	= srcs
+SRCS		=\
+ ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_isspace.c\
+\
  ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c\
  ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c\
  ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c\
 \
  ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c\
  ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c\
- ft_putendl_fd.c ft_putnbr_fd.c
+ ft_putendl_fd.c ft_putnbr_fd.c\
+\
+ ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c\
+ ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_lstsort.c
 
-SRCSBNS	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c\
- ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c 
+BUILD_DIR	= build
+OBJ_DIR		= $(BUILD_DIR)/objs
+OBJ			= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
+INC_DIR		= includes
 
-OBJS	= ${SRCS:.c=.o}
-OBJSBNS	= ${SRCSBNS:.c=.o}
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror -I $(INC_DIR)
 
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
+RM			= rm -rf
 
-RM		= rm -f
+all			: $(NAME)
 
-$(NAME):	${OBJS}
-				ar rc ${NAME} ${OBJS}
-				ranlib ${NAME}
+$(OBJ_DIR)/%.o: $(SRCS_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-all:	$(NAME)
+$(NAME)		: $(OBJ)
+			ar -r $(BUILD_DIR)/$(NAME) $(OBJ)
+			ranlib $(BUILD_DIR)/$(NAME)
 
-.c.o:
-		${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o}
+clean		:
+			$(RM) $(OBJ_DIR)
 
-re:		fclean all
+fclean		:
+			$(RM) $(BUILD_DIR)
 
-bonus:	${OBJSBNS} all
-			ar r ${NAME} ${OBJSBNS}
-			ranlib ${NAME}
+re			: fclean all
 
-rebns: fclean bonus
-
-clean:
-		${RM} ${OBJS}
-		${RM} ${OBJSBNS}
-		@${RM} libft.so
-
-fclean: clean
-		${RM} ${NAME}
-
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-	gcc -nostartfiles -shared -o libft.so $(OBJS)
-
-.PHONY: all re clean fclean bonus rebns so
+.PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:24:29 by ple-stra          #+#    #+#             */
-/*   Updated: 2021/12/02 23:08:39 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/01/03 18:34:00 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int			ft_isdigit(int c);
 int			ft_isalnum(int c);
 int			ft_isprint(int c);
 int			ft_isascii(int c);
+int			ft_isspace(int c);
 size_t		ft_strlen(const char *s);
 void		*ft_memset(void *s, int c, size_t n);
 void		ft_bzero(void *s, size_t n);
@@ -67,8 +68,6 @@ void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void		ft_lstsort(t_list *lst, int (*cmp)(void *a, void *b));
 
 #endif
-
-//ft_isspace
-//ft_sort
