@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:24:29 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/03 18:34:00 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/01/05 19:34:28 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int			ft_isalnum(int c);
 int			ft_isprint(int c);
 int			ft_isascii(int c);
 int			ft_isspace(int c);
+
 size_t		ft_strlen(const char *s);
 void		*ft_memset(void *s, int c, size_t n);
 void		ft_bzero(void *s, size_t n);
@@ -45,6 +46,7 @@ int			ft_memcmp(const void *s1, const void *s2, size_t n);
 char		*ft_strnstr(const char *big, const char *little, size_t len);
 int			ft_atoi(const char *nptr);
 void		*ft_calloc(size_t nmenb, size_t size);
+int			ft_free(void *to_free);
 char		*ft_strdup(const char *s);
 
 char		*ft_substr(char const *s, unsigned int start, size_t len);
@@ -55,9 +57,11 @@ char		*ft_itoa(int n);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void		ft_striteri(char *s, void (*f)(unsigned int, char*));
 void		ft_putchar_fd(char c, int fd);
-void		ft_putstr_fd(char *s, int fd);
+size_t		ft_putstr_fd(const char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
+size_t		ft_putstr(const char *str);
+void		ft_putchar(char c);
 
 t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **alst, t_list *new);

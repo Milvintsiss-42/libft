@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 05:24:52 by ple-stra          #+#    #+#             */
-/*   Updated: 2021/12/03 00:04:26 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/01/05 22:42:57 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static size_t	get_number_of_strings(char const *s, char c)
 	return (nb_strings);
 }
 
-char	**ft_free(char **start, char **end)
+static char	**ft_freesplit(char **start, char **end)
 {
 	while (start != end)
 		free(*start++);
@@ -37,7 +37,7 @@ char	**ft_free(char **start, char **end)
 	return (NULL);
 }
 
-char	**return_and_null_terminate(char **start, char **end)
+static char	**return_and_null_terminate(char **start, char **end)
 {
 	*end = NULL;
 	return (start);
@@ -66,7 +66,7 @@ char	**ft_split(char const *s, char c)
 			s++;
 		*strings_tmp = malloc(sizeof(char) * (s - s_tmp + 1));
 		if (!*strings_tmp)
-			return (ft_free(strings, strings_tmp));
+			return (ft_freesplit(strings, strings_tmp));
 		ft_strlcpy(*strings_tmp++, s_tmp, s - s_tmp + 1);
 	}
 	return (return_and_null_terminate(strings, strings_tmp));
