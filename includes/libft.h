@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:24:29 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/16 18:46:15 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/01/23 00:18:32 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ int			ft_isalnum(int c);
 int			ft_isprint(int c);
 int			ft_isascii(int c);
 int			ft_isspace(int c);
+
+void		ft_setflag(int *flags, int flag);
+int			ft_checkflag(int flags, int flag);
+void		ft_resetflag(int *flags, int flag);
+
+int			ft_max(int a, int b);
+int			ft_min(int a, int b);
 
 size_t		ft_strlen(const char *s);
 size_t		ft_strlen_c(const char *s, char end_c);
@@ -75,6 +82,7 @@ void		ft_putchar(char c);
 
 t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **alst, t_list *new);
+void		ft_lstadd_next(t_list **alst, t_list *new);
 int			ft_lstsize(t_list *lst);
 t_list		*ft_lstlast(t_list *lst);
 void		ft_lstadd_back(t_list **alst, t_list *new);
