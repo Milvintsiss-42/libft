@@ -1,6 +1,6 @@
 [![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/ple-stra)](https://github.com/JaeSeoKim/badge42)
 
-# 42 libft - v1.0.0
+# 42 libft - v1.1.0
 
 This is the helper lib that I use everyday at 42 school to do my projects.
 
