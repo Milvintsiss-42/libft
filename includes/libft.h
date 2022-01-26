@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:24:29 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/23 00:18:32 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:58:13 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+# include "get_next_line.h"
 
 # define HEX_BASE		"0123456789abcdef"
 # define HEX_BASE_CAPS	"0123456789ABCDEF"

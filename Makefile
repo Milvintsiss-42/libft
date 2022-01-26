@@ -6,13 +6,14 @@
 #    By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 21:12:38 by ple-stra          #+#    #+#              #
-#    Updated: 2022/01/23 00:19:16 by ple-stra         ###   ########.fr        #
+#    Updated: 2022/01/26 16:36:46 by ple-stra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
 
 SRCS_DIR	= srcs
+GNL_DIR		= get_next_line
 SRCS		=\
  ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_isspace.c\
 \
@@ -31,7 +32,9 @@ SRCS		=\
 \
  ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c\
  ft_lstadd_next.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c\
- ft_lstsort.c
+ ft_lstsort.c\
+\
+ $(addprefix $(GNL_DIR)/, get_next_line.c get_next_line_utils.c)
 
 BUILD_DIR	= build
 OBJ_DIR		= $(BUILD_DIR)/objs
@@ -47,6 +50,7 @@ all			: $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRCS_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/$(GNL_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME)		: $(OBJ)
