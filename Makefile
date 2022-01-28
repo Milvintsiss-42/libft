@@ -6,7 +6,7 @@
 #    By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 21:12:38 by ple-stra          #+#    #+#              #
-#    Updated: 2022/01/26 16:36:46 by ple-stra         ###   ########.fr        #
+#    Updated: 2022/01/28 22:00:52 by ple-stra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,14 @@ NAME	= libft.a
 
 SRCS_DIR	= srcs
 GNL_DIR		= get_next_line
+GNL_SRCS	= get_next_line.c get_next_line_utils.c
+PTF_DIR		= ft_printf
+PTF_SRCS	= ft_printf.c\
+ parsing.c parse_arguments.c\
+ parse_conversion_c.c parse_conversion_di.c parse_conversion_p.c\
+ parse_conversion_s.c parse_conversion_uxX.c parse_conversion_utils.c\
+ invalid_conversion.c is_conversion.c\
+ lists.c buildstr.c free.c
 SRCS		=\
  ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_isspace.c\
 \
@@ -34,7 +42,9 @@ SRCS		=\
  ft_lstadd_next.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c\
  ft_lstsort.c\
 \
- $(addprefix $(GNL_DIR)/, get_next_line.c get_next_line_utils.c)
+ $(addprefix $(GNL_DIR)/, $(GNL_SRCS))\
+\
+ $(addprefix $(PTF_DIR)/, $(PTF_SRCS))
 
 BUILD_DIR	= build
 OBJ_DIR		= $(BUILD_DIR)/objs
@@ -51,6 +61,7 @@ all			: $(NAME)
 $(OBJ_DIR)/%.o: $(SRCS_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(GNL_DIR)
+	@mkdir -p $(OBJ_DIR)/$(PTF_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME)		: $(OBJ)
