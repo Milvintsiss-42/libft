@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 04:19:11 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/05/06 04:04:59 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/05/06 05:49:03 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static int	pos_in_base(const char c, char const *base)
 	char const	*start;
 
 	start = base;
-	while (*base != c)
+	while (*base != c && *base)
 		base++;
-	if (!base)
+	if (!*base)
 		return (-1);
 	return (base - start);
 }
