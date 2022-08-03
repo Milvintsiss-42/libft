@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 03:25:32 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/28 21:44:49 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/08/03 22:34:20 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_ptfmod
 }	t_ptfmod;
 
 int				ft_printf(const char *format, ...);
+int				ft_printf_fd(int fd, const char *format, ...);
+int				ft_vasprintf(char **ret, const char *format, ...);
 
 int				ft_ptfparse(t_list **print, const char *format, va_list ap);
 
