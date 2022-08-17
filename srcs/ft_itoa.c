@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 06:44:32 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/12 18:24:11 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/08/18 00:07:15 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,40 @@ char	*ft_itoa_u(unsigned int n)
 	return (str);
 }
 
+/// stupid
+/// ints[0] == len
+/// ints[1] == tmp_n
+/// 
+/// ACTUAL SIZE = 19 lines (as counted by norminette)
+/// THIS IS NOT THE BEST, WE CAN DO MORE!!! MAHAHAHAHAH
+char	*ft_itoa_stupid(int n)
+{
+	long int	ints[2];
+	char		*str;
+
+	ints[0] = n <= 0;
+	ints[1] = n;
+	while (ints[1] && ++(ints[0]))
+		ints[1] /= 10;
+	str = malloc(sizeof(char) * (ints[0] + 1)) + ints[0];
+	if (!(str - ints[0]))
+		return (NULL);
+	*str = 0;
+	*(str - ints[0]) = '-' + 3 * (n == 0);
+	ints[1] = n;
+	while (ints[1])
+	{
+		*--str = ints[1] % 10 * (-1 + 2 * (ints[1] > 0)) + '0';
+		ints[1] /= 10;
+	}
+	return (str - (n <= 0));
+}
+
 // int	main(void)
 // {
-// 	printf("%s", ft_itoa(255));
+// 	printf("%s\n", ft_itoa_stupid(0));
+// 	printf("%s\n", ft_itoa_stupid(255));
+// 	printf("%s\n", ft_itoa_stupid(-255));
+// 	printf("%s\n", ft_itoa_stupid(10));
+// 	printf("%s\n", ft_itoa_stupid(-10));
 // }
