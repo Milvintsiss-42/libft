@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:16:43 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/26 15:56:41 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/08/21 08:04:27 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 
 # ifndef GNL_BUFFER_SIZE
 #  define GNL_BUFFER_SIZE 42
+# endif
+
+# ifndef GNL_BREAK_ON_EOF_MID_LINE
+#  define GNL_BREAK_ON_EOF_MID_LINE 1
 # endif
 
 typedef struct s_gnlstring

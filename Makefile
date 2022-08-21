@@ -6,7 +6,7 @@
 #    By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 21:12:38 by ple-stra          #+#    #+#              #
-#    Updated: 2022/01/28 22:00:52 by ple-stra         ###   ########.fr        #
+#    Updated: 2022/08/21 08:24:29 by ple-stra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,10 @@ CFLAGS		= -Wall -Wextra -Werror -I $(INC_DIR)
 
 RM			= rm -rf
 
+ifeq (disable_gnl_eof_mid_line, $(filter disable_gnl_eof_mid_line,$(MAKECMDGOALS)))
+	CFLAGS	+= -D GNL_BREAK_ON_EOF_MID_LINE=0
+endif
+
 all			: $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRCS_DIR)/%.c
@@ -76,4 +80,8 @@ fclean		:
 
 re			: fclean all
 
-.PHONY: all clean fclean re
+disable_gnl_eof_mid_line:
+			@echo "Watching for EOF mid line is disabled"
+
+.PHONY: all clean fclean re\
+ disable_gnl_eof_mid_line

@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:17:02 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/26 15:59:29 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/08/21 08:04:40 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ static int	loop(t_gnlstring **l_line, size_t *line_len, char **sbuf,
 				break ;
 		}
 		buf->len = read(buf->fd, *sbuf, GNL_BUFFER_SIZE);
-		if (buf->len <= 0)
+		if ((GNL_BREAK_ON_EOF_MID_LINE && buf->len <= 0)
+			|| (buf->len < 0 || (buf->len == 0 && *line_len == 0)))
 			break ;
 		buf->rlen = gnl_strllen(*sbuf, '\n', buf->len);
 	}
