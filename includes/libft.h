@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:24:29 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/10/13 21:59:32 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/10/17 22:55:58 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int			ft_baseatoi(char const *nptr, char const *base);
 void		*ft_calloc(size_t nmenb, size_t size);
 int			ft_free(void *to_free);
 char		*ft_strdup(const char *s);
+char		*ft_strndup(const char *s, size_t n);
 void		*ft_realloc(void *ptr, size_t size);
 
 char		*ft_substr(char const *s, unsigned int start, size_t len);
