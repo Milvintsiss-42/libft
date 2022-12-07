@@ -6,7 +6,7 @@
 #    By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 21:12:38 by ple-stra          #+#    #+#              #
-#    Updated: 2022/12/07 20:30:09 by ple-stra         ###   ########.fr        #
+#    Updated: 2022/12/07 20:34:14 by ple-stra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ OBJ_DIR		= $(BUILD_DIR)/objs
 OBJ			= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 INC_DIR		= includes
 
-CC			= gcc
+CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -I $(INC_DIR)
 
 RM			= rm -rf
