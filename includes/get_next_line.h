@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:16:43 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/08/21 08:04:27 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:25:57 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ typedef struct s_gnlbuf
 	ssize_t	len;
 }	t_gnlbuf;
 
+char		*get_next_line_interface(int fd, int do_free);
+
 char		*get_next_line(int fd);
+void		clean_gnl_for_fd(int fd);
 
 size_t		gnl_strllen(char const *str, char c, size_t l);
 void		*gnl_free_all(t_gnlstring *l_line, char **sbuf);

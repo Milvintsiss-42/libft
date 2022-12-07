@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:17:02 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/08/21 08:04:40 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:23:27 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,24 @@ static char	*get_line(t_gnlstring *l_line, size_t line_len, char **sbuf);
 static int	loop(t_gnlstring **l_line, size_t *line_len, char **sbuf,
 				t_gnlbuf *buf);
 
-char	*get_next_line(int fd)
+static void	init_buf_struct(t_gnlbuf *buf, int fd, char *sbuf)
+{
+	buf->len = gnl_strllen(sbuf, 0, GNL_BUFFER_SIZE);
+	buf->rlen = gnl_strllen(sbuf, '\n', buf->len);
+	buf->fd = fd;
+}
+
+char	*get_next_line_interface(int fd, int do_free)
 {
 	t_gnlstring		*l_line;
 	static char		*sbuf[10240];
 	t_gnlbuf		buf;
 	size_t			line_len;
 
+	line_len = 0;
+	l_line = NULL;
+	if (do_free)
+		return (gnl_free_all(l_line, &sbuf[fd]));
 	if (!sbuf[fd])
 	{
 		sbuf[fd] = malloc(sizeof(char) * GNL_BUFFER_SIZE);
@@ -30,11 +41,7 @@ char	*get_next_line(int fd)
 		if (!sbuf[fd])
 			return (NULL);
 	}
-	line_len = 0;
-	l_line = NULL;
-	buf.len = gnl_strllen(sbuf[fd], 0, GNL_BUFFER_SIZE);
-	buf.rlen = gnl_strllen(sbuf[fd], '\n', buf.len);
-	buf.fd = fd;
+	init_buf_struct(&buf, fd, sbuf[fd]);
 	if (!loop(&l_line, &line_len, &sbuf[fd], &buf))
 		return (NULL);
 	if (buf.len == -1 || l_line == NULL)
