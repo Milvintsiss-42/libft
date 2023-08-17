@@ -34,6 +34,8 @@ void		ft_resetflag(int *flags, int flag);
 
 int			ft_max(int a, int b);
 int			ft_min(int a, int b);
+double		ft_max_d(double a, double b);
+double		ft_min_d(double a, double b);
 
 size_t		ft_strlen(const char *s);
 size_t		ft_strlen_c(const char *s, char end_c);
